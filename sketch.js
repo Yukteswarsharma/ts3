@@ -98,3 +98,20 @@ function keyPressed() {
     slingShot.attach(this.ball);
   }
 }
+async function getBackgroundImg(){
+  var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
+  var responseJSON = await response.json();
+
+  var datetime = responseJSON.datetime;
+  var hour = datetime.slice(11,13);
+  
+  if(hour>=0600 && hour<=1900){
+      bg = (153,217,234);
+  }
+  else{
+      bg = (230,670,108);
+  }
+
+  backgroundImg = loadImage(bg);
+  console.log(backgroundImg);
+}
